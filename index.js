@@ -16,7 +16,7 @@ let server = http.createServer(function (req, res) {
   let filePath = extract(req.url);
   fs.readFile(filePath, function (err, data) {
     if (err) {
-      handleError(err, res);
+      res.end('<h1> Error </h1>');
     } else {
       res.end(data);
     }
