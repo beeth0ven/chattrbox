@@ -4,12 +4,11 @@
 
 let http = require('http');
 let fs = require('fs');
-let extract = require('./extract');
+let mime = require('mime');
 
-let handleError = function (err, res) {
-  res.writeHead(404);
-  res.end();
-};
+let extract = require('./extract');
+// let handleError = require('./error');
+
 
 let server = http.createServer(function (req, res) {
   console.log('Responding to a request.');
@@ -18,6 +17,8 @@ let server = http.createServer(function (req, res) {
     if (err) {
       res.end('<h1> Error </h1>');
     } else {
+      let contentType = mime.lookup(filePath);
+      res.setHeader('Content-Type', contentType);
       res.end(data);
     }
   })
