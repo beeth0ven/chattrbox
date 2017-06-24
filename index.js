@@ -5,6 +5,7 @@
 let http = require('http');
 let fs = require('fs');
 let extract = require('./extract');
+let wss = require('./websockets-server');
 
 let handleError = function (err, res) {
   res.writeHead(404);
