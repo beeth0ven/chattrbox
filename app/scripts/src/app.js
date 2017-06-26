@@ -14,6 +14,9 @@ class ChatApp {
         console.log(data);
       });
     });
+    socket.registerCloseHandler(() => {
+      console.log('closed');
+    })
 
   }
 }
